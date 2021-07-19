@@ -40,6 +40,7 @@ jobs:
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           src_path: /.
+          src_branch: main
           dst_path: /backup/
           dst_owner: GopherBots
           dst_repo_name: mp_point_datadog
