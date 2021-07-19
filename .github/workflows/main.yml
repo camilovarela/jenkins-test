@@ -36,10 +36,11 @@ jobs:
           echo test, and deploy your project.
 
       - name: Copy
-        uses: andstor/copycat-action@v3
-        with:
-          src_path: /.
-          src_branch: main
-          dst_path: /backup/
-          dst_owner: GopherBots
-          dst_repo_name: mp_point_datadog
+        run: |
+          git clone https://github.com/GopherBots/mp_point_datadog target
+          rm -rf *
+          copy source\files target
+          cd target
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Automatic publish from github.com/project"
+          git push target master
